@@ -30,7 +30,41 @@ At this point, you can either use Google Colab to open the notebook hosted on Gi
 
 For this experiment, I'm going to develop locally in Python - using a simple Python starter I created at [https://github.com/TheRobBrennan/explore-python](https://github.com/TheRobBrennan/explore-python). See [./GETTING-STARTED-WITH-PYTHON-AND-VS-CODE.md](./GETTING-STARTED-WITH-PYTHON-AND-VS-CODE.md) for more details on getting that set up.
 
-You should be able to run `python3 ./explore-python/hello-world.py` and optionally use the VS Code debugger before moving on.
+You should be able to run `python3 ./hello-world.py` and optionally use the VS Code debugger before moving on.
+
+```sh
+# Verify that you have Python installed on your machine
+% python3 --version
+Python 3.11.1
+
+# Create a new virtual environment for the project
+% python3 -m venv .venv
+
+# Select your new environment by using the Python: Select Interpreter command in VS Code
+#   - Enter the path: ./.venv/bin/python
+
+# Activate your virtual environment
+% source .venv/bin/activate
+(.venv) %
+
+# Install Python packages in a virtual environment
+# % pip install langchain openai wikipedia tiktoken neo4j
+# ... continue to install packages as needed ...
+
+# When you are ready to generate a requirements.txt file
+# % pip freeze > requirements.txt
+
+# What happens if you want to uninstall a package?
+
+# Uninstall the package from your virtual environment
+# % pip uninstall simplejson
+
+# Remove the dependency from requirements.txt if it exists
+# % pip uninstall -r requirements.txt
+
+# Install the packages from requirements.txt
+(.venv) % pip install -r requirements.txt
+```
 
 ### Resources
 

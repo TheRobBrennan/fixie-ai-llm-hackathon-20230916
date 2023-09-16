@@ -1,3 +1,14 @@
 {
-  "cSpell.words": ["Colab", "Fixie", "Hackathon", "INSTANCEID", "INSTANCENAME"]
+  "cSpell.words": [
+    "Colab",
+    "Fixie",
+    "Hackathon",
+    "INSTANCEID",
+    "INSTANCENAME",
+    "langchain",
+    "openai",
+    "simplejson",
+    "tiktoken",
+    "venv"
+  ]
 }
