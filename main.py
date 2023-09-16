@@ -84,7 +84,7 @@ try:
         raise ValueError("Some environment variables are missing!")
 
     # Here we go!
-    # load_data_from_wikipedia_and_store_openai_embeddings_in_neo4j_vector()
+    load_data_from_wikipedia_and_store_openai_embeddings_in_neo4j_vector()
     query_against_an_existing_neo4j_vector()
     question_answer_workflow_with_langchain()
 
