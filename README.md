@@ -84,7 +84,6 @@ Leonhard Euler was born on 15 April 1707, in Basel, Switzerland, to Paul III Eul
 Now that we have our data stored in the Neo4j database, let's see how we can run a query against it:
 
 ```sh
-% python3 02-verify-query-against-neo4j-vector.py
 == Early life ==
 Leonhard Euler was born on 15 April 1707, in Basel, Switzerland, to Paul III Euler, a pastor of the Reformed Church, and Marguerite (née Brucker), whose ancestors include a number of well-known scholars in the classics. He was the oldest of
 ```
