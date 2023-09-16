@@ -26,7 +26,7 @@ Let's take a trip to Python land and see how to get started exploring how to inc
 Once you have your environment variables defined, you can use `source` to load them into your terminal/shell:
 `% source .env`
 
-At this point, you can either use Google Collab to open the notebook hosted on GitHub at [https://github.com/tomasonjo/blogs/blob/master/llm/official_langchain_neo4jvector.ipynb](https://github.com/tomasonjo/blogs/blob/master/llm/official_langchain_neo4jvector.ipynb) - or you can start developing in Python locally.
+At this point, you can either use Google Colab to open the notebook hosted on GitHub at [https://github.com/tomasonjo/blogs/blob/master/llm/official_langchain_neo4jvector.ipynb](https://github.com/tomasonjo/blogs/blob/master/llm/official_langchain_neo4jvector.ipynb) - or you can start developing in Python locally.
 
 For this experiment, I'm going to develop locally in Python.
 
