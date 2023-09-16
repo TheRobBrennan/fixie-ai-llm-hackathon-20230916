@@ -30,6 +30,8 @@ At this point, you can either use Google Colab to open the notebook hosted on Gi
 
 For this experiment, I'm going to develop locally in Python - using a simple Python starter I created at [https://github.com/TheRobBrennan/explore-python](https://github.com/TheRobBrennan/explore-python). See [./GETTING-STARTED-WITH-PYTHON-AND-VS-CODE.md](./GETTING-STARTED-WITH-PYTHON-AND-VS-CODE.md) for more details on getting that set up.
 
+You should be able to run `python3 ./explore-python/hello-world.py` and optionally use the VS Code debugger before moving on.
+
 ### Resources
 
 - [LangChain Library Adds Full Support for Neo4j Vector Index](https://neo4j.com/developer-blog/langchain-library-full-support-neo4j-vector-index/)
