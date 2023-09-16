@@ -61,12 +61,12 @@ def store_data_in_neo4j(documents, credentials):
     This function is a mock since the actual module isn't available in this environment.
     """
     # Neo4j Aura credentials
-    url = os.environ.get("NEO4J_URI")
-    username = os.environ.get("NEO4J_USERNAME")
-    password = os.environ.get("NEO4J_PASSWORD")
+    url = credentials["url"]
+    username = credentials["username"]
+    password = credentials["password"]
 
     # OpenAI credentials
-    openai_api_secret_key = os.environ.get("OPEN_AI_SECRET_KEY")
+    openai_api_secret_key = credentials["openai_api_secret_key"]
 
     # Instantiate Neo4j vector from documents
     Neo4jVector.from_documents(
