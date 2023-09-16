@@ -96,3 +96,22 @@ Now that we have our data stored in the Neo4j database, let's see how we can run
 == Early life ==
 Leonhard Euler was born on 15 April 1707, in Basel, Switzerland, to Paul III Euler, a pastor of the Reformed Church, and Marguerite (née Brucker), whose ancestors include a number of well-known scholars in the classics. He was the oldest of
 ```
+
+#### Step 03 - Question-Answer Workflow With LangChain
+
+Let's create a question-answering that generates answers based on the provided context but also provides which documents it used as the context:
+
+```sh
+% python3 03-question-answer-workflow-with-langchain.py
+Euler is credited for popularizing several mathematical concepts and notations. Some of the things he is credited for popularizing include:
+
+1. The use of the Greek letter π (pi) to represent the ratio of a circle's circumference to its diameter.
+2. The notation f(x) to represent a function.
+3. The use of the letter e to represent the base of the natural logarithm, now known as Euler's number.
+4. The use of the letter i to represent the imaginary unit (√-1).
+5. The use of lowercase letters to represent the sides of a triangle and uppercase letters to represent the angles.
+6. The use of the Greek letter Σ (sigma) to represent summations.
+7. The use of the Greek letter Δ (delta) to represent finite differences.
+
+These are just a few examples of the many mathematical concepts and notations that Euler is credited for popularizing.
+```
