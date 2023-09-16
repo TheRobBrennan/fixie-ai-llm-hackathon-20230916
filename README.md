@@ -6,6 +6,10 @@ This project will explore my adventures at today's Fixie AI + LLM Hackathon.
 
 Let's take a trip to Python land and see how to get started exploring how to incorporate Neo4j with an LLM application.
 
+### Resources
+
+- [LangChain Library Adds Full Support for Neo4j Vector Index](https://neo4j.com/developer-blog/langchain-library-full-support-neo4j-vector-index/)
+
 ### Scratchpad
 
 #### Initial setup
@@ -82,7 +86,3 @@ Created a chunk of size 1221, which is longer than the specified 1000
 == Early life ==
 Leonhard Euler was born on 15 April 1707, in Basel, Switzerland, to Paul III Euler, a pastor of the Reformed Church, and Marguerite (née Brucker), whose ancestors include a number of well-known scholars in the classics. He was the oldest of
 ```
-
-### Resources
-
-- [LangChain Library Adds Full Support for Neo4j Vector Index](https://neo4j.com/developer-blog/langchain-library-full-support-neo4j-vector-index/)
