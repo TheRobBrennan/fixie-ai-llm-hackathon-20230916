@@ -1,3 +1,24 @@
 {
-  "cSpell.words": ["Fixie", "Hackathon"]
+  "cSpell.words": [
+    "Brucker",
+    "Colab",
+    "CYPHER",
+    "datasources",
+    "dotenv",
+    "Fixie",
+    "Hackathon",
+    "INSTANCEID",
+    "INSTANCENAME",
+    "langchain",
+    "Leonhard",
+    "openai",
+    "simplejson",
+    "tiktoken",
+    "vectorstores",
+    "venv"
+  ],
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "python.formatting.provider": "none"
 }
