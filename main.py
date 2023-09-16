@@ -3,6 +3,7 @@ from modules.environment.environment_utilities import (
     verify_environment_variables,
 )
 from modules.datasources.wikipedia import load_wikipedia_data, process_wikipedia_data
+from modules.langchain.langchain import initialize_qa_workflow, execute_qa_workflow
 from modules.neo4j.credentials import neo4j_credentials
 from modules.neo4j.vector import (
     store_data_in_neo4j,
@@ -51,6 +52,24 @@ def query_against_an_existing_neo4j_vector():
 def question_answer_workflow_with_langchain():
     try:
         print(f"Question-Answer Workflow With LangChain")
+
+        index_name = "vector"  # default index name
+        neo4j_vector = initialize_neo4j_vector(neo4j_credentials, index_name)
+
+        # Initialize and execute the QA workflow
+        qa_workflow = initialize_qa_workflow(
+            neo4j_vector, neo4j_credentials["openai_api_secret_key"]
+        )
+        query = "What is Euler credited for popularizing?"
+        qa_results = execute_qa_workflow(
+            neo4j_vector, qa_workflow, query, neo4j_credentials["openai_api_secret_key"]
+        )
+        # print(qa_results)
+        print(qa_results["answer"])
+
+        # Close the Neo4j connection (if a close method is available)
+        neo4j_vector._driver.close()
+
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
 

@@ -93,7 +93,6 @@ Leonhard Euler was born on 15 April 1707, in Basel, Switzerland, to Paul III Eul
 Let's create a question-answering that generates answers based on the provided context but also provides which documents it used as the context:
 
 ```sh
-% python3 03-question-answer-workflow-with-langchain.py
 Euler is credited for popularizing several mathematical concepts and notations. Some of the things he is credited for popularizing include:
 
 1. The use of the Greek letter π (pi) to represent the ratio of a circle's circumference to its diameter.
