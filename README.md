@@ -28,7 +28,7 @@ Once you have your environment variables defined, you can use `source` to load t
 
 At this point, you can either use Google Colab to open the notebook hosted on GitHub at [https://github.com/tomasonjo/blogs/blob/master/llm/official_langchain_neo4jvector.ipynb](https://github.com/tomasonjo/blogs/blob/master/llm/official_langchain_neo4jvector.ipynb) - or you can start developing in Python locally.
 
-For this experiment, I'm going to develop locally in Python.
+For this experiment, I'm going to develop locally in Python - using a simple Python starter I created at [https://github.com/TheRobBrennan/explore-python](https://github.com/TheRobBrennan/explore-python). See [./GETTING-STARTED-WITH-PYTHON-AND-VS-CODE.md](./GETTING-STARTED-WITH-PYTHON-AND-VS-CODE.md) for more details on getting that set up.
 
 ### Resources
 
