@@ -37,6 +37,7 @@ text_splitter = CharacterTextSplitter.from_tiktoken_encoder(
 documents = text_splitter.split_documents(raw_documents)
 
 # Remove summary from metadata
+# LangChain’s WikipediaLoader adds a summary to each chunk by default. I thought the added summaries were a bit redundant. For example, if you used a vector similarity search to retrieve the top three results, the summary would be repeated three times. Therefore, I decided to remove it from the dataset.
 for d in documents:
     del d.metadata["summary"]
 
@@ -59,9 +60,12 @@ neo4j_vector = Neo4jVector.from_documents(
 )
 
 # Vector Similarity Search
-# VERIFY: Simple vector similarity search to verify that everything works as intended.
 try:
+    # VERIFY: Simple vector similarity search to verify that everything works as intended.
     query = "Where did Euler grow up?"
+
+    # The LangChain module used the specified embedding function (OpenAI in this example) to embed the question and then find the most similar documents by comparing the cosine similarity between the user question and indexed documents.
+    # Neo4j Vector index also supports the Euclidean similarity metric along with the cosine similarity.
     results = neo4j_vector.similarity_search(query)
     print(results[0].page_content)
 except Exception as e:
