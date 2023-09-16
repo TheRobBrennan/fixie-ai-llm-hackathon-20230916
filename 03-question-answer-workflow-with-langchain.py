@@ -1,5 +1,9 @@
-import os
-from environs import Env
+# Import required modules and utility functions
+
+from environment_utilities import (
+    load_environment_variables,
+    verify_environment_variables,
+)
 from langchain.vectorstores.neo4j_vector import Neo4jVector
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.chat_models import ChatOpenAI
@@ -7,54 +11,52 @@ from langchain.chains import RetrievalQAWithSourcesChain, ConversationalRetrieva
 from langchain.memory import ConversationBufferMemory
 
 
-# Read our .env file
-env = Env()
-env.read_env()
+def initialize_neo4j_vector(credentials, index_name):
+    """
+    Function to instantiate a Neo4j vector from an existing vector.
+    """
+    # Implement the actual logic using the langchain and neo4j modules here
+    # Neo4j Aura credentials
+    url = credentials["url"]
+    username = credentials["username"]
+    password = credentials["password"]
 
-# Define a dictionary of expected environment variables
-env_vars = {
-    "OPEN_AI_SECRET_KEY": None,
-    "NEO4J_URI": None,
-    "NEO4J_USERNAME": None,
-    "NEO4J_PASSWORD": None,
-    "AURA_INSTANCEID": None,
-    "AURA_INSTANCENAME": None,
-}
+    # OpenAI credentials
+    openai_api_secret_key = credentials["openai_api_secret_key"]
 
-# Load environment variables from .env into the dictionary
-for key in env_vars:
-    env_vars[key] = os.environ.get(key)
+    # Instantiate Neo4j vector from an existing vector
+    # CYPHER - "SHOW INDEXES;" will show we have an index type Vector named "vector"
+    neo4j_vector = Neo4jVector.from_existing_index(
+        OpenAIEmbeddings(openai_api_key=openai_api_secret_key),
+        url=url,
+        username=username,
+        password=password,
+        index_name=index_name,
+    )
 
-# Neo4j Aura credentials
-url = os.environ.get("NEO4J_URI")
-username = os.environ.get("NEO4J_USERNAME")
-password = os.environ.get("NEO4J_PASSWORD")
+    return neo4j_vector
 
-# OpenAI credentials
-openai_api_secret_key = os.environ.get("OPEN_AI_SECRET_KEY")
 
-# Instantiate Neo4j vector from an existing vector
-# CYPHER - "SHOW INDEXES;" will show we have an index type Vector named "vector"
-index_name = "vector"  # default index name
-neo4j_vector = Neo4jVector.from_existing_index(
-    OpenAIEmbeddings(openai_api_key=openai_api_secret_key),
-    url=url,
-    username=username,
-    password=password,
-    index_name=index_name,
-)
-
-# Question-Answer Workflow With LangChain
-try:
+def initialize_qa_workflow(neo4j_vector, openai_api_secret_key):
+    """
+    Function to set up the question-answer workflow using LangChain.
+    """
+    # Implement the actual logic using the langchain modules here
     chain = RetrievalQAWithSourcesChain.from_chain_type(
         ChatOpenAI(temperature=0, openai_api_key=openai_api_secret_key),
         chain_type="stuff",
         retriever=neo4j_vector.as_retriever(),
     )
 
-    query = "What is Euler credited for popularizing?"
+    return chain
 
-    chain(
+
+def execute_qa_workflow(qa_workflow, query, openai_api_secret_key):
+    """
+    Function to execute the QA workflow and retrieve the answers.
+    """
+    # Implement the actual logic using the qa_workflow
+    qa_workflow(
         {"question": query},
         return_only_outputs=True,
     )
@@ -65,8 +67,39 @@ try:
         neo4j_vector.as_retriever(),
         memory=memory,
     )
+    # results = qa({"question": query})["answer"]
+    results = qa({"question": query})
 
-    print(qa({"question": query})["answer"])
+    return results
 
-except Exception as e:
-    print(f"An unexpected error occurred: {e}")
+
+# Main Execution
+
+# Load and verify environment variables using the utility
+env_vars = load_environment_variables()
+if not verify_environment_variables(env_vars):
+    raise ValueError("Some environment variables are missing!")
+
+# Verify the environment variables
+if not verify_environment_variables(env_vars):
+    raise ValueError("Some environment variables are missing!")
+
+# Initialize the Neo4j vector
+credentials = {
+    "url": env_vars["NEO4J_URI"],
+    "username": env_vars["NEO4J_USERNAME"],
+    "password": env_vars["NEO4J_PASSWORD"],
+    "openai_api_secret_key": env_vars["OPEN_AI_SECRET_KEY"],
+}
+index_name = "vector"  # default index name
+neo4j_vector = initialize_neo4j_vector(credentials, index_name)
+
+# Initialize and execute the QA workflow
+qa_workflow = initialize_qa_workflow(neo4j_vector, env_vars["OPEN_AI_SECRET_KEY"])
+query = "What is Euler credited for popularizing?"
+qa_results = execute_qa_workflow(qa_workflow, query, env_vars["OPEN_AI_SECRET_KEY"])
+# print(qa_results)
+print(qa_results["answer"])
+
+# Close the Neo4j connection (if a close method is available)
+neo4j_vector._driver.close()
