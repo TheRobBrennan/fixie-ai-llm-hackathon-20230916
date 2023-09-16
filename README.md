@@ -70,17 +70,9 @@ Python 3.11.1
 (.venv) % pip install -r requirements.txt
 ```
 
-#### Step 00 - Verify that you have your environment variables defined
-
-```sh
-% python3 00-verify-environment-variables-exist.py
-All environment variables have been defined correctly!
-```
-
 #### Step 01 - Load data from Wikipedia and store OpenAI embeddings in a Neo4j Vector
 
 ```sh
-% python3 01-load-data-from-wikipedia-and-store-openai-embeddings-in-neo4j-vector.py
 Created a chunk of size 1124, which is longer than the specified 1000
 Created a chunk of size 1221, which is longer than the specified 1000
 == Early life ==
