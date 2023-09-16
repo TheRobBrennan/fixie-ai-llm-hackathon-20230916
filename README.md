@@ -8,7 +8,7 @@ Let's take a trip to Python land and see how to get started exploring how to inc
 
 ### Scratchpad
 
-Initial setup:
+#### Initial setup
 
 - OpenAI
   - Create an OpenAI API key
