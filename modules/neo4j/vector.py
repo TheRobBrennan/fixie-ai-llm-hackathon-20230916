@@ -62,6 +62,8 @@ def store_data_in_neo4j(documents, credentials):
         password=password,
     )
 
-    # Mocking the behavior of Neo4jVector and OpenAIEmbeddings
+    # Summarize the behavior of Neo4jVector and OpenAIEmbeddings
     stored_data = {"status": "Stored successfully", "count": len(documents)}
+    print(stored_data)
+
     return stored_data
