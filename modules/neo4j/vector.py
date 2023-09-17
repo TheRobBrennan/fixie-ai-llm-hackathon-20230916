@@ -43,7 +43,6 @@ def perform_similarity_search(neo4j_vector, query):
 def store_data_in_neo4j(documents, credentials):
     """
     Store and index text with Neo4j.
-    This function is a mock since the actual module isn't available in this environment.
     """
     # Neo4j Aura credentials
     url = credentials["url"]
