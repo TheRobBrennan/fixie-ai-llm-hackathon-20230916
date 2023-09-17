@@ -9,7 +9,6 @@ def load_wikipedia_data(query: str):
     """
     # Reading and chunking a Wikipedia article
     # https://neo4j.com/developer-blog/langchain-library-full-support-neo4j-vector-index/
-    query = "Leonhard Euler"
 
     # Read the wikipedia article
     raw_documents = WikipediaLoader(query=query).load()
