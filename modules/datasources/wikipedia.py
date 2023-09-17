@@ -27,7 +27,9 @@ def process_wikipedia_data(raw_documents):
     documents = text_splitter.split_documents(raw_documents)
 
     # Remove summary from metadata
-    # LangChain’s WikipediaLoader adds a summary to each chunk by default. I thought the added summaries were a bit redundant. For example, if you used a vector similarity search to retrieve the top three results, the summary would be repeated three times. Therefore, I decided to remove it from the dataset.
+    # LangChain’s WikipediaLoader adds a summary to each chunk by default. I thought the added summaries were a bit redundant.
+    # For example, if you used a vector similarity search to retrieve the top three results, the summary would be repeated three times.
+    # Therefore, I decided to remove it from the dataset.
     for d in documents:
         del d.metadata["summary"]
 
