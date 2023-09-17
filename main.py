@@ -15,7 +15,7 @@ from modules.neo4j.vector import (
 def load_data_from_wikipedia_and_store_openai_embeddings_in_neo4j_vector(query):
     try:
         print(
-            f"\nLoad data from Wikipedia and store OpenAI embeddings in a Neo4j Vector"
+            f"\nLoad data from Wikipedia and store OpenAI embeddings in a Neo4j Vector\n\tQuery: {query}\n"
         )
 
         raw_docs = load_wikipedia_data(query)
@@ -28,7 +28,7 @@ def load_data_from_wikipedia_and_store_openai_embeddings_in_neo4j_vector(query):
 
 def query_against_an_existing_neo4j_vector(index_name, query):
     try:
-        print(f"\nQuery against an existing Neo4j Vector")
+        print(f"\nQuery against an existing Neo4j Vector\n\tQuery: {query}\n")
 
         # Instantiate Neo4j vector from an existing vector
         neo4j_vector = initialize_neo4j_vector(neo4j_credentials, index_name)
@@ -48,7 +48,7 @@ def query_against_an_existing_neo4j_vector(index_name, query):
 
 def question_answer_workflow_with_langchain(index_name, query):
     try:
-        print(f"\nQuestion/Answer workflow with LangChain")
+        print(f"\nQuestion/Answer workflow with LangChain\n\tQuery: {query}\n")
 
         neo4j_vector = initialize_neo4j_vector(neo4j_credentials, index_name)
 
