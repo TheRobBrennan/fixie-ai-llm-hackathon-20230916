@@ -41,8 +41,3 @@ def verify_environment_variables(env_vars):
             all_env_vars_set = False
 
     return all_env_vars_set
-
-
-# Testing the utility functions
-# env_vars = load_environment_variables()
-# verification_result = verify_environment_variables(env_vars)
