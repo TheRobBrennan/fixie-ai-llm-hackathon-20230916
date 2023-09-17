@@ -5,7 +5,6 @@ from langchain.text_splitter import CharacterTextSplitter
 def load_wikipedia_data(query: str):
     """
     Load data from Wikipedia based on the given query.
-    This function is a mock since the actual module isn't available in this environment.
     """
     # Reading and chunking a Wikipedia article
     # https://neo4j.com/developer-blog/langchain-library-full-support-neo4j-vector-index/
@@ -19,7 +18,6 @@ def load_wikipedia_data(query: str):
 def process_wikipedia_data(raw_documents):
     """
     Process (chunk and clean) the loaded Wikipedia data.
-    This function is a mock since the actual module isn't available in this environment.
     """
     # Mocking the behavior of CharacterTextSplitter and other processing
     # Define chunking strategy
