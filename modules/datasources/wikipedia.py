@@ -19,7 +19,6 @@ def process_wikipedia_data(raw_documents):
     """
     Process (chunk and clean) the loaded Wikipedia data.
     """
-    # Mocking the behavior of CharacterTextSplitter and other processing
     # Define chunking strategy
     text_splitter = CharacterTextSplitter.from_tiktoken_encoder(
         chunk_size=1000, chunk_overlap=20
