@@ -20,16 +20,20 @@ If you've already set up your OpenAI, Neo4j, and Python virtual environment, you
 (.venv) % python3 main.py
 
 Load data from Wikipedia and store OpenAI embeddings in a Neo4j Vector
+	Query: Leonhard Euler
+
 Created a chunk of size 1124, which is longer than the specified 1000
 Created a chunk of size 1221, which is longer than the specified 1000
-Created a chunk of size 2328, which is longer than the specified 1000
-{'status': 'Stored successfully', 'count': 21}
 
 Query against an existing Neo4j Vector
+	Query: Where did Euler grow up?
+
 == Early life ==
 Leonhard Euler was born on 15 April 1707, in Basel, Switzerland, to Paul III Euler, a pastor of the Reformed Church, and Marguerite (née Brucker), whose ancestors include a number of well-known scholars in the classics. He was the oldest of
 
 Question/Answer workflow with LangChain
+	Query: What is Euler credited for popularizing?
+
 Euler is credited for popularizing several mathematical concepts and notations. Some of the things he is credited for popularizing include:
 
 1. The use of the Greek letter π (pi) to represent the ratio of a circle's circumference to its diameter.
