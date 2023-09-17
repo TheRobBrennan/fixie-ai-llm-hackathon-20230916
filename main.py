@@ -15,7 +15,7 @@ from modules.neo4j.vector import (
 def load_data_from_wikipedia_and_store_openai_embeddings_in_neo4j_vector(query):
     try:
         print(
-            f"\n\nLoad data from Wikipedia and store OpenAI embeddings in a Neo4j Vector"
+            f"\nLoad data from Wikipedia and store OpenAI embeddings in a Neo4j Vector"
         )
 
         raw_docs = load_wikipedia_data(query)
