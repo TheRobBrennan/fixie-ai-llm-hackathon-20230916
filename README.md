@@ -100,3 +100,18 @@ Python 3.11.1
 # Install the packages from requirements.txt
 (.venv) % pip install -r requirements.txt
 ```
+
+For completeness, the following commands are helpful when working with a Python project:
+
+```sh
+# When you are ready to generate a requirements.txt file
+# % pip freeze > requirements.txt
+
+# What happens if you want to uninstall a package?
+
+# Uninstall the package from your virtual environment
+# % pip uninstall simplejson
+
+# Remove the dependency from requirements.txt if it exists
+# % pip uninstall -r requirements.txt
+```
