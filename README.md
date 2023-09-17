@@ -11,6 +11,12 @@ If you've already set up your OpenAI, Neo4j, and Python virtual environment, you
 ```sh
 # Activate your virtual environment
 % source .venv/bin/activate
+(.venv) %
+
+# Load your environment variables (defined in ".env")
+(.venv) % source .env
+
+# Run the main script
 (.venv) % python3 main.py
 
 Load data from Wikipedia and store OpenAI embeddings in a Neo4j Vector
