@@ -1,6 +1,8 @@
 # Welcome
 
-This project will explore my adventures at today's Fixie AI + LLM Hackathon.
+This project explores my adventures during the [Fixie AI + LLM Hackathon](https://lu.ma/llm-hackathon-fixie-september-2023) on Saturday, September 16th, 2023.
+
+![](./guides/images/20230916-luma-fixie-ai-llm-hackathon.png)
 
 Let's take a trip to Python land and see how to get started exploring how to incorporate Neo4j with an LLM application.
 
