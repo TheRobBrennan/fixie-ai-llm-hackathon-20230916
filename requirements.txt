@@ -7,6 +7,7 @@ beautifulsoup4==4.12.2
 certifi==2023.7.22
 charset-normalizer==3.2.0
 dataclasses-json==0.5.14
+environs==9.5.0
 frozenlist==1.4.0
 idna==3.4
 langchain==0.0.292
@@ -21,6 +22,7 @@ openai==0.28.0
 packaging==23.1
 pydantic==2.3.0
 pydantic_core==2.6.3
+python-dotenv==1.0.0
 pytz==2023.3.post1
 PyYAML==6.0.1
 regex==2023.8.8

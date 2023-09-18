@@ -6,6 +6,10 @@ Let's take a trip to Python land and see how to get started exploring how to inc
 
 If this is your first time setting up this project and related resources, please see the `Initial setup` section below.
 
+I've also created a detailed guide filled with screenshots and helpful visuals covering my work today in a [Walkthrough](./guides/Walkthrough.md) guide.
+
+![](./guides/Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/20230916-teaser.png)
+
 If you've already set up your OpenAI, Neo4j, and Python virtual environment, you can run the project:
 
 ```sh
