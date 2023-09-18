@@ -120,7 +120,7 @@ For this project, I created a new GitHub repo at [https://github.com/TheRobBrenn
 python3 main.py  2.98s user 2.20s system 13% cpu 39.288 total
 ```
 
-If you’re using VS Code, you can use the built-in debugging capabilities within the IDE while developing and exploring the code base. If we load the `main.py` file, we can add a breakpoint in the left gutter (line 23 in this example) and click **Debug Python File**:
+If you’re using VS Code, you can use the built-in debugging capabilities within the IDE while developing and exploring the code base. If we load the [main.py](../main.py) file, we can add a breakpoint in the left gutter (line 23 in this example) and click **Debug Python File**:
 
 ![Untitled](images/Untitled%2012.png)
 
@@ -144,13 +144,13 @@ Besides, once I knew what I was doing, I could incorporate that into a Next.js/R
 
 ## 🐍 Explore the Python code
 
-`[main.py](http://main.py)` is our main script - which imports several modules that I wound up creating during a final refactor with an assist from ChatGPT 4:
+[main.py](../main.py) is our main script - which imports several modules that I wound up creating during a final refactor with an assist from ChatGPT 4:
 
 ![Untitled](images/Untitled%2016.png)
 
 For those of you unfamiliar with Python, this import pattern can be used to load files contained within subdirectories.
 
-For example, I have an `environment_utilities.py` file in the `./modules/environment` directory of my project:
+For example, I have an [environment_utilities.py](../modules/environment/environment_utilities.py) file in the `./modules/environment` directory of my project:
 
 ![Untitled](images/Untitled%2017.png)
 
@@ -171,7 +171,7 @@ Our example application is fairly straightforward. We will:
 
 ## Step 0 - Set the stage - load your environment variables
 
-Let’s look at `modules/environment/environment_utilities.py`
+Let’s look at [modules/environment/environment_utilities.py](../modules/environment/environment_utilities.py)
 
 ![Untitled](images/Untitled%2019.png)
 
@@ -203,7 +203,7 @@ Once we are confident all of our environment variables have been defined, we can
 
 [Leonhard Euler](https://en.wikipedia.org/wiki/Leonhard_Euler)
 
-If we look at our `[main.py](http://main.py)` file, we see a function defined toward the top to _`load_data_from_wikipedia_and_store_openai_embeddings_in_neo4j_vector`_:
+If we look at our [main.py](../main.py) file, we see a function defined toward the top to _`load_data_from_wikipedia_and_store_openai_embeddings_in_neo4j_vector`_:
 
 ![Untitled](images/Untitled%2021.png)
 
@@ -253,7 +253,7 @@ The last stop on this leg of the adventure is to store our `processed_docs` in N
 
 ![Untitled](images/Untitled%2030.png)
 
-We will be importing our credentials to connect to Neo4j (using the environment variables we loaded) from `modules/neo4j/credentials.py`:
+We will be importing our credentials to connect to Neo4j (using the environment variables we loaded) from [modules/neo4j/credentials.py](../modules/neo4j/credentials.py):
 
 ![Untitled](images/Untitled%2031.png)
 
@@ -269,13 +269,13 @@ Let’s look a [LangChain Vector Stores](https://python.langchain.com/docs/modul
 
 ![Untitled](images/Untitled%2032.png)
 
-Let’s take a look at `modules/neo4j/vector.py` and see how we will import the `processed_documents` into Neo4j and index them using the newly added vector index via the _`store_data_in_neo4j`_ function:
+Let’s take a look at `[modules/neo4j/vector.py](../modules/neo4j/vector.py)` and see how we will import the `processed_documents` into Neo4j and index them using the newly added vector index via the _`store_data_in_neo4j`_ function:
 
 ![Untitled](images/Untitled%2033.png)
 
 ## Before we run our script, let’s take a peek at our clean Neo4j database
 
-Before we execute the `[main.py](http://main.py)` script in its entirety, take a look at your Neo4j graph database in [Neo4j Aura](https://console.neo4j.io/). Simply click `Open` in the upper-right of the card displaying your instance.
+Before we execute the [main.py](../main.py) script in its entirety, take a look at your Neo4j graph database in [Neo4j Aura](https://console.neo4j.io/). Simply click `Open` in the upper-right of the card displaying your instance.
 
 ![Untitled](images/Untitled%2010.png)
 
