@@ -8,9 +8,9 @@ Let's take a trip to Python land and see how to get started exploring how to inc
 
 If this is your first time setting up this project and related resources, please see the `Initial setup` section below.
 
-I've also created a detailed guide filled with screenshots and helpful visuals covering my work today in a [Walkthrough](./guides/Walkthrough.md) guide.
+I've also created a detailed guide with screenshots and helpful visuals covering my work today in a [Walkthrough](./guides/Walkthrough.md) guide.
 
-![](./guides/Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/20230916-teaser.png)
+![](./guides/images/20230916-teaser.png)
 
 If you've already set up your OpenAI, Neo4j, and Python virtual environment, you can run the project:
 
@@ -19,6 +19,11 @@ If you've already set up your OpenAI, Neo4j, and Python virtual environment, you
 % source .venv/bin/activate
 (.venv) %
 
+# Copy the sample environment variables file to .env
+(.venv) % cp .env.sample .env
+
+# Update .env with your OpenAI API key and Neo4j credentials
+
 # Load your environment variables (defined in ".env")
 (.venv) % source .env
 
@@ -26,19 +31,19 @@ If you've already set up your OpenAI, Neo4j, and Python virtual environment, you
 (.venv) % python3 main.py
 
 Load data from Wikipedia and store OpenAI embeddings in a Neo4j Vector
-	Query: Leonhard Euler
+  Query: Leonhard Euler
 
 Created a chunk of size 1124, which is longer than the specified 1000
 Created a chunk of size 1221, which is longer than the specified 1000
 
 Query against an existing Neo4j Vector
-	Query: Where did Euler grow up?
+  Query: Where did Euler grow up?
 
 == Early life ==
 Leonhard Euler was born on 15 April 1707, in Basel, Switzerland, to Paul III Euler, a pastor of the Reformed Church, and Marguerite (née Brucker), whose ancestors include a number of well-known scholars in the classics. He was the oldest of
 
 Question/Answer workflow with LangChain
-	Query: What is Euler credited for popularizing?
+  Query: What is Euler credited for popularizing?
 
 Euler is credited for popularizing several mathematical concepts and notations. Some of the things he is credited for popularizing include:
 
@@ -53,7 +58,7 @@ Euler is credited for popularizing several mathematical concepts and notations. 
 These are just a few examples of the many mathematical concepts and notations that Euler is credited for popularizing.
 ```
 
-Shout-out to [LangChain Library Adds Full Support for Neo4j Vector Index](https://neo4j.com/developer-blog/langchain-library-full-support-neo4j-vector-index/) for serving as a great guide for getting started with Neo4j Vectors. This project has been refactored for a more modular approach - and includes a few tweaks based on my personal taste.
+Shout-out to [LangChain Library Adds Full Support for Neo4j Vector Index](https://neo4j.com/developer-blog/langchain-library-full-support-neo4j-vector-index/) for serving as a great guide for getting started with Neo4j Vectors. This project has been refactored for a more modular approach - and includes a few tweaks based on my taste.
 
 ## Initial setup
 
