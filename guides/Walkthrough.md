@@ -9,11 +9,11 @@ My focus for today’s hackathon was to see how I could import source data from 
 My goals for today’s hackathon were:
 
 - Develop an understanding of how data can be stored as a Neo4j Vector and used in a lightweight Retrieval-Augmented Generation (RAG) example application
-    - Review the Neo4j blog post - [LangChain Library Adds Full Support for Neo4j Vector Index](https://neo4j.com/developer-blog/langchain-library-full-support-neo4j-vector-index/)
-    - Create working Python scripts that
-        - Loads source data from Wikipedia based on a hard-coded query
-        - Process and store the results as a Neo4j Vector
-    - Refactor scripts into a reusable, modular architecture
+  - Review the Neo4j blog post - [LangChain Library Adds Full Support for Neo4j Vector Index](https://neo4j.com/developer-blog/langchain-library-full-support-neo4j-vector-index/)
+  - Create working Python scripts that
+    - Loads source data from Wikipedia based on a hard-coded query
+    - Process and store the results as a Neo4j Vector
+  - Refactor scripts into a reusable, modular architecture
 - ~~STRETCH GOAL: Load and process a variety of URLs or files and use those for an example RAG application~~
 
 ## Initial setup
@@ -30,21 +30,21 @@ Chances are good if you attended this hackathon, you’re probably comfortable c
 
 The real magic is to sign into your OpenAI account. From there, you can navigate to the **View API Keys** section of your profile:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled.png)
+![Untitled](images/Untitled.png)
 
 Let’s create a new secret key for this project - “DEMO: LangChain and Neo4j Vector embedding”:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%201.png)
+![Untitled](images/Untitled%201.png)
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%202.png)
+![Untitled](images/Untitled%202.png)
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%203.png)
+![Untitled](images/Untitled%203.png)
 
 Be sure to copy this value somewhere safe. We’re going to add it to an environment variables file in our project momentarily.
 
 Voila. Our OpenAI key has been created.
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%204.png)
+![Untitled](images/Untitled%204.png)
 
 ### Neo4j
 
@@ -54,41 +54,41 @@ I’m a huge Neo4j fan. Ever since I was introduced to the world of graph databa
 
 For this demo, I’ll use Neo4j Aura to host my graph database on their free tier.
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%205.png)
+![Untitled](images/Untitled%205.png)
 
 First, we’ll need to click **New Instance**:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%206.png)
+![Untitled](images/Untitled%206.png)
 
 Generally speaking, you can only create one free tier instance with a Neo4j Aura account.
 
 Let’s click **Create Free Instance** to get underway:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%207.png)
+![Untitled](images/Untitled%207.png)
 
 We will want to declare several important configuration settings in our environment variables file momentarily, so I would recommend you click **Download and continue** to save these settings to a text file on your machine.
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%208.png)
+![Untitled](images/Untitled%208.png)
 
 Here is an example configuration file downloaded from Neo4j Aura:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%209.png)
+![Untitled](images/Untitled%209.png)
 
 👮‍♂️Don’t worry - this is an ephemeral instance that will no longer be available once this walkthrough is drafted.
 
 After a few moments, we’ll see our instance is ready to rock and roll:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2010.png)
+![Untitled](images/Untitled%2010.png)
 
 We’ll take a look at our Neo4j instance later on in this tutorial. More eye candy to follow. I promise.
 
 ### Python project for development using VS Code
 
-If you don’t have **Python 3.11.1** or newer in your development environment, please make sure you [download](https://www.python.org/downloads/) and install that before continuing with this walkthrough. 
+If you don’t have **Python 3.11.1** or newer in your development environment, please make sure you [download](https://www.python.org/downloads/) and install that before continuing with this walkthrough.
 
 For this project, I created a new GitHub repo at [https://github.com/TheRobBrennan/fixie-ai-llm-hackathon-20230916](https://github.com/TheRobBrennan/fixie-ai-llm-hackathon-20230916).
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2011.png)
+![Untitled](images/Untitled%2011.png)
 
 **TL;DR If you have cloned the project to your local machine, you can get this project up and running quickly:**
 
@@ -117,23 +117,23 @@ python3 main.py  2.98s user 2.20s system 13% cpu 39.288 total
 
 If you’re using VS Code, you can use the built-in debugging capabilities within the IDE while developing and exploring the code base. If we load the `main.py` file, we can add a breakpoint in the left gutter (line 23 in this example) and click **Debug Python File**:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2012.png)
+![Untitled](images/Untitled%2012.png)
 
 Once we hit our breakpoint, we can see all kinds of rich debugging information in the left sidebar.
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2013.png)
+![Untitled](images/Untitled%2013.png)
 
 All that’s left is to update our environment variables. Be sure to open `.env.sample` and save it as `.env` with the appropriate OpenAI API key and Neo4j credentials you saved.
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2014.png)
+![Untitled](images/Untitled%2014.png)
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2015.png)
+![Untitled](images/Untitled%2015.png)
 
 ## Let’s get to it
 
 I would recommend you read the original inspiration for this project - the Neo4j blog post [LangChain Library Adds Full Support for Neo4j Vector Index](https://neo4j.com/developer-blog/langchain-library-full-support-neo4j-vector-index/) - while continuing on the tour of my hackathon adventure.
 
-I consider myself more of a React/JavaScript developer, so revisiting and refactoring Python doesn’t tend to light me up. However, the example code in the blog post kept calling out to me as something that would be fun to modularize and refactor once I truly knew what the fuck I was doing. 
+I consider myself more of a React/JavaScript developer, so revisiting and refactoring Python doesn’t tend to light me up. However, the example code in the blog post kept calling out to me as something that would be fun to modularize and refactor once I truly knew what the fuck I was doing.
 
 Besides, once I knew what I was doing, I could incorporate that into a Next.js/React project in the future.
 
@@ -141,13 +141,13 @@ Besides, once I knew what I was doing, I could incorporate that into a Next.js/R
 
 `[main.py](http://main.py)` is our main script - which imports several modules that I wound up creating during a final refactor with an assist from ChatGPT 4:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2016.png)
+![Untitled](images/Untitled%2016.png)
 
-For those of you unfamiliar with Python, this import pattern can be used to load files contained within subdirectories. 
+For those of you unfamiliar with Python, this import pattern can be used to load files contained within subdirectories.
 
 For example, I have an `environment_utilities.py` file in the `./modules/environment` directory of my project:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2017.png)
+![Untitled](images/Untitled%2017.png)
 
 ### The main program - main.py
 
@@ -155,28 +155,28 @@ Our example application is fairly straightforward. We will:
 
 - Load the environment variables defined in `.env`
 - Load data for a user query from Wikipedia
-    - Load raw data from Wikipedia
-    - Process (chunk and clean) Wikipedia data
-    - Store chunks of data in Neo4j using OpenAI embeddings and a Neo4j Vector
-        - HUH? Don’t worry if that line confused you. That’s the goal of this walkthrough, and something we’ll answer at the end of this tutorial.
+  - Load raw data from Wikipedia
+  - Process (chunk and clean) Wikipedia data
+  - Store chunks of data in Neo4j using OpenAI embeddings and a Neo4j Vector
+    - HUH? Don’t worry if that line confused you. That’s the goal of this walkthrough, and something we’ll answer at the end of this tutorial.
 - We’ll then ask a question against our Neo4j backend to see if our data imported as expected
 - Lastly, we’ll follow a simple question/answer workflow using LangChain and our Neo4j backend
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2018.png)
+![Untitled](images/Untitled%2018.png)
 
 ## Step 0 - Set the stage - load your environment variables
 
 Let’s look at `modules/environment/environment_utilities.py`
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2019.png)
+![Untitled](images/Untitled%2019.png)
 
 ### Highlights
 
 Please take note the following:
 
 - `~4` - We have defined a dictionary of environment variables that we require to be defined for this application.
-- `~14` - We have a *`load_environment_variables`* function that will read our `.env` file
-- `~31` - We have a *`verify_environment_variables`* function that will let us know if all required environment variables have been loaded
+- `~14` - We have a _`load_environment_variables`_ function that will read our `.env` file
+- `~31` - We have a _`verify_environment_variables`_ function that will let us know if all required environment variables have been loaded
 
 If we haven’t loaded all of our expected environment variables, this script will complain loudly at you by throwing an exception and terminating. Sad panda.
 
@@ -194,15 +194,15 @@ ValueError: Some environment variables are missing!
 
 Once we are confident all of our environment variables have been defined, we can dive into the meat of this demo. Our goal - shamelessly borrowed from the originally referenced blog post on Neo4j - starts with seeing what data we can load from [Wikipedia](https://en.wikipedia.org/wiki/Leonhard_Euler) about [Leonhard Euler](https://en.wikipedia.org/wiki/Leonhard_Euler) - credited with being the first to develop graph theory.
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2020.png)
+![Untitled](images/Untitled%2020.png)
 
 [Leonhard Euler](https://en.wikipedia.org/wiki/Leonhard_Euler)
 
-If we look at our `[main.py](http://main.py)` file, we see a function defined toward the top to *`load_data_from_wikipedia_and_store_openai_embeddings_in_neo4j_vector`*:
+If we look at our `[main.py](http://main.py)` file, we see a function defined toward the top to _`load_data_from_wikipedia_and_store_openai_embeddings_in_neo4j_vector`_:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2021.png)
+![Untitled](images/Untitled%2021.png)
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2022.png)
+![Untitled](images/Untitled%2022.png)
 
 ### Load raw data from Wikipedia
 
@@ -210,17 +210,17 @@ The first stop in our adventure is to use the [WikipediaLoader](https://python.l
 
 But wait. WTF is a [LangChain Document Loader](https://www.notion.so/LangChain-Library-Adds-Full-Support-for-Neo4j-Vector-Index-910b91e110ae44f3970bf118cf06366b?pvs=21)? I thought you’d never ask!
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2023.png)
+![Untitled](images/Untitled%2023.png)
 
 If we look at the left sidebar, we can see a metric shit ton (the technical term) of [LangChain Document Loader](https://www.notion.so/LangChain-Library-Adds-Full-Support-for-Neo4j-Vector-Index-910b91e110ae44f3970bf118cf06366b?pvs=21) we can use. For this example, we can see that there is a Wikipedia Document Loader ready for us to use.
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2024.png)
+![Untitled](images/Untitled%2024.png)
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2025.png)
+![Untitled](images/Untitled%2025.png)
 
 If we peek under the covers, we can see that `raw_documents` contains:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2026.png)
+![Untitled](images/Untitled%2026.png)
 
 Sexy. 💃
 
@@ -229,61 +229,58 @@ Sexy. 💃
 With our `raw_documents` in hand, let’s see what the blog post wants us to do next:
 
 > Next, we use the **tiktoken** text chunking module, which uses a tokenizer made by OpenAI, to split the article into chunks with *1000* tokens.
-> 
 
 What is the [LangChain CharacterTextSplitter](https://python.langchain.com/docs/modules/data_connection/document_transformers/text_splitters/character_text_splitter)?
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2027.png)
+![Untitled](images/Untitled%2027.png)
 
 Let’s use the [LangChain CharacterTextSplitter](https://python.langchain.com/docs/modules/data_connection/document_transformers/text_splitters/character_text_splitter) in our module:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2028.png)
+![Untitled](images/Untitled%2028.png)
 
 This will generate `processed_docs` that we can then use for preparing to store the data in Neo4j:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2029.png)
+![Untitled](images/Untitled%2029.png)
 
 ### Store chunks of data in Neo4j using OpenAI embeddings and a Neo4j Vector
 
 The last stop on this leg of the adventure is to store our `processed_docs` in Neo4j:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2030.png)
+![Untitled](images/Untitled%2030.png)
 
 We will be importing our credentials to connect to Neo4j (using the environment variables we loaded) from `modules/neo4j/credentials.py`:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2031.png)
+![Untitled](images/Untitled%2031.png)
 
-Wait. Why is there an `open_api_secret_key` in the mix?  We’re going to be using OpenAI to generate the vector embedding details we need, so I’ve included it as part of the configuration for simplicity.
+Wait. Why is there an `open_api_secret_key` in the mix? We’re going to be using OpenAI to generate the vector embedding details we need, so I’ve included it as part of the configuration for simplicity.
 
 > LangChain makes it easy to import the documents into Neo4j and index them using the newly added vector index.
-> 
 
 > Neo4j vector index is wrapped as a LangChain vector store and, therefore, follows the syntax used to interact with other vector databases.
-> 
 
 Clear as mud?
 
 Let’s look a [LangChain Vector Stores](https://python.langchain.com/docs/modules/data_connection/vectorstores/):
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2032.png)
+![Untitled](images/Untitled%2032.png)
 
-Let’s take a look at `modules/neo4j/vector.py` and see how we will import the `processed_documents` into Neo4j and index them using the newly added vector index via the *`store_data_in_neo4j`* function:
+Let’s take a look at `modules/neo4j/vector.py` and see how we will import the `processed_documents` into Neo4j and index them using the newly added vector index via the _`store_data_in_neo4j`_ function:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2033.png)
+![Untitled](images/Untitled%2033.png)
 
 ## Before we run our script, let’s take a peek at our clean Neo4j database
 
 Before we execute the `[main.py](http://main.py)` script in its entirety, take a look at your Neo4j graph database in [Neo4j Aura](https://console.neo4j.io/). Simply click `Open` in the upper-right of the card displaying your instance.
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2010.png)
+![Untitled](images/Untitled%2010.png)
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2034.png)
+![Untitled](images/Untitled%2034.png)
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2035.png)
+![Untitled](images/Untitled%2035.png)
 
 This is your [Neo4j Workspace](https://neo4j.com/product/workspace/). We will use this to explore, query, and interact with our graph database.
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2036.png)
+![Untitled](images/Untitled%2036.png)
 
 ### It’s showtime. Run the script 🍿
 
@@ -314,41 +311,41 @@ python3 main.py  2.98s user 2.20s system 13% cpu 39.288 total
 
 Once you run your script, click the refresh glyph near the last updated timestamp:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2037.png)
+![Untitled](images/Untitled%2037.png)
 
 Our graph database has some data! We can see that there are twenty-one (21) `Chunk` nodes - with a variety of property keys available:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2038.png)
+![Untitled](images/Untitled%2038.png)
 
 If this is your first adventure with Neo4j, don’t you worry. We’re just going to barely scratch the surface here to see what data we’ve imported.
 
 If we look at the [Query a Neo4j database using Cypher](https://neo4j.com/docs/getting-started/cypher-intro/) guide, we can see Neo4j uses [Cypher](https://neo4j.com/product/cypher-graph-query-language/) as the language to query the graph.
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2039.png)
+![Untitled](images/Untitled%2039.png)
 
 We’re going to create a simple Cypher query that will match all nodes in the graph (referenced as the variable n) and display the results.
 
 `MATCH (n) RETURN n`
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2040.png)
+![Untitled](images/Untitled%2040.png)
 
 This will show us something like this:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2041.png)
+![Untitled](images/Untitled%2041.png)
 
 Huh? This graph view is interesting. We have colored nodes with the `Chunk` label displayed at a high level. Let’s zoom in.
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2042.png)
+![Untitled](images/Untitled%2042.png)
 
 What happens if we click on the `Chunk` node with the title `Euler's formula`?
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2043.png)
+![Untitled](images/Untitled%2043.png)
 
 Whoa! There’s the chunk of text that this node represents - contained in the `text` property - along with the OpenAI embeddings stored in `embedding`.
 
 What is [LangChain OpenAIEmbeddings](https://python.langchain.com/docs/integrations/text_embedding/openai) - besides from being one of the many [LangChain Text embedding models](https://python.langchain.com/docs/integrations/text_embedding)? And what do those `embedding` values represent?
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2044.png)
+![Untitled](images/Untitled%2044.png)
 
 Let’s take a look at the chunk of text that we processed - stored in the `text` property of the node we selected:
 
@@ -358,18 +355,18 @@ text: "Euler's formula, named after Leonhard Euler, is a mathematical formula in
 where e is the base of the natural logarithm, i is the imaginary unit, and cos and sin are the trigonometric functions cosine and sine respectively. This complex exponential function is sometimes denoted cis x ("cosine plus i sine"). The formula is still valid if x is a complex number, and so some authors refer to the more general complex version as Euler's formula.Euler's formula is ubiquitous in mathematics, physics, chemistry, and engineering. The physicist Richard Feynman called the equation "our jewel" and "the most remarkable formula in mathematics".When x = π, Euler's formula may be rewritten as eiπ + 1 = 0 or eiπ = -1, which is known as Euler's identity.
 
 == History ==
-In 1714, the English mathematician Roger Cotes presented a geometrical argument that can be interpreted (after correcting a misplaced factor of 
-  
-    
-      
-        
-          
+In 1714, the English mathematician Roger Cotes presented a geometrical argument that can be interpreted (after correcting a misplaced factor of
+
+
+
+
+
             −
             1
-          
-        
-      
-    
+
+
+
+
     {\displaystyle {\sqrt {-1}}}
   ) as:
 Exponentiating this equation yields Euler's formula. Note that the logarithmic statement is not universally correct for complex numbers, since a complex logarithm can have infinitely many values, differing by multiples of 2πi.
@@ -385,23 +382,23 @@ The view of complex numbers as points in the complex plane was described about 5
 The exponential function ex for real values of x may be defined in a few different equivalent ways (see Characterizations of the exponential function). Several of these methods may be directly extended to give definitions of ez for complex values of z simply by substituting z in place of x and using the complex algebraic operations. In particular we may use any of the three following definitions, which are equivalent. From a more advanced perspective, each of these definitions may be interpreted as giving the unique analytic continuation of ex to the complex plane.
 
 === Differential equation definition ===
-The exponential function 
-  
-    
-      
+The exponential function
+
+
+
         f
         (
         z
         )
         =
-        
+
           e
-          
+
             z
-          
-        
-      
-    
+
+
+
+
     {\displaystyle f(z)=e^{z}}
    is the unique differentiable function of a complex variable for which the derivative equals the function  and
 
@@ -436,69 +433,68 @@ WTF? How is this going to help us in our search? I’m glad you asked, my friend
 According to the guide at [https://www.elastic.co/what-is/vector-search](https://www.elastic.co/what-is/vector-search):
 
 > Vector search leverages **[machine learning (ML)](https://www.elastic.co/what-is/machine-learning)** to capture the meaning and context of **[unstructured data](https://www.elastic.co/what-is/unstructured-data)**, including text and images, transforming it into a numeric representation. Frequently used for **[semantic search](https://www.elastic.co/what-is/semantic-search)**, vector search finds similar data using approximate nearest neighbor (ANN) algorithms. Compared to traditional keyword search, vector search yields more relevant results and executes faster.
-> 
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2045.png)
+![Untitled](images/Untitled%2045.png)
 
 ### Vector Similarity Search
 
 Let’s query our Neo4j graph to see if we can answer the question, “Where did Euler grow up?” with our imported data.
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2046.png)
+![Untitled](images/Untitled%2046.png)
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2047.png)
+![Untitled](images/Untitled%2047.png)
 
 First, let’s initialize our Neo4j Vector. The default name of a Vector index is `vector` - which is what is being passed in along with our Neo4j credentials. Using the [Neo4jVector](https://api.python.langchain.com/en/latest/vectorstores/langchain.vectorstores.neo4j_vector.Neo4jVector.html) vector store, we will want to use the [from_existing_index](https://api.python.langchain.com/en/latest/vectorstores/langchain.vectorstores.neo4j_vector.Neo4jVector.html#langchain.vectorstores.neo4j_vector.Neo4jVector.from_existing_index) method:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2048.png)
+![Untitled](images/Untitled%2048.png)
 
 Once we have our [Neo4j Vector Index](https://python.langchain.com/docs/integrations/vectorstores/neo4jvector), we can perform our similarity search using the LangChain module’s similarity_search method:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2049.png)
+![Untitled](images/Untitled%2049.png)
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2050.png)
+![Untitled](images/Untitled%2050.png)
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2051.png)
+![Untitled](images/Untitled%2051.png)
 
 Let’s take a look at the results of our query!
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2052.png)
+![Untitled](images/Untitled%2052.png)
 
 Our application will display the `page_content` - a processed chunk of data - of the first result.
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2053.png)
+![Untitled](images/Untitled%2053.png)
 
 ## Step 3 - A simple question/answer workflow using LangChain and our Neo4j backend
 
 For the last step in our demo, we’re going to explore a sample question/answer workflow using LangChain and our Neo4j backend.
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2054.png)
+![Untitled](images/Untitled%2054.png)
 
 What’s involved here? Looks like a straightforward plan to initialize and execute a [LangChain Question Answering](https://python.langchain.com/docs/use_cases/question_answering.html) workflow.
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2055.png)
+![Untitled](images/Untitled%2055.png)
 
 So how is this going to work - at a high level? 🤔
 
 The [LangChain Question Answering Overview](https://python.langchain.com/docs/use_cases/question_answering.html#overview) contains a wonderful visualization of what we’re going to be doing:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2056.png)
+![Untitled](images/Untitled%2056.png)
 
 We’re going to be picking up at step 4 - Retrieval - since the `neo4j_vector` is our vectorstore. We’re going to initialize our Neo4j Vector Index for searching - and then generate a prompt for the LLM which includes our original query and retrieved data.
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2057.png)
+![Untitled](images/Untitled%2057.png)
 
 First, let’s initialize our Neo4j Vector Index. The default name of a Vector index is `vector` - which is what is being passed in along with our Neo4j credentials. Using the [Neo4jVector](https://api.python.langchain.com/en/latest/vectorstores/langchain.vectorstores.neo4j_vector.Neo4jVector.html) vector store, we will want to use the [from_existing_index](https://api.python.langchain.com/en/latest/vectorstores/langchain.vectorstores.neo4j_vector.Neo4jVector.html#langchain.vectorstores.neo4j_vector.Neo4jVector.from_existing_index) method:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2048.png)
+![Untitled](images/Untitled%2048.png)
 
 Once we have our [Neo4j Vector Index](https://python.langchain.com/docs/integrations/vectorstores/neo4jvector), we can initialize our workflow:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2058.png)
+![Untitled](images/Untitled%2058.png)
 
 After we’ve set up our workflow, we can execute it by generating a prompt for the LLM which includes our original query and retrieved data:
 
-![Untitled](Walkthrough%20d2d833d59f3e41e5953d3757478fb4f0/Untitled%2059.png)
+![Untitled](images/Untitled%2059.png)
 
 Whew! That’s a mouthful. But we did it. We’re retaining some conversational memory in the question answering workflow - and seeing what the response is:
 
