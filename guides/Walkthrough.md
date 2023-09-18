@@ -103,6 +103,11 @@ For this project, I created a new GitHub repo at [https://github.com/TheRobBrenn
 # Install the packages from requirements.txt
 (.venv) % pip install -r requirements.txt
 
+# Copy the sample environment variables file to .env
+(.venv) % cp .env.sample .env
+
+# Update .env with your OpenAI API key and Neo4j credentials
+
 # Load your environment variables (defined in ".env")
 (.venv) % source .env
 
@@ -296,6 +301,11 @@ Here we go. It’s time.
 
 # Install the packages from requirements.txt
 (.venv) % pip install -r requirements.txt
+
+# Copy the sample environment variables file to .env
+(.venv) % cp .env.sample .env
+
+# Update .env with your OpenAI API key and Neo4j credentials
 
 # Load your environment variables (defined in ".env")
 (.venv) % source .env
