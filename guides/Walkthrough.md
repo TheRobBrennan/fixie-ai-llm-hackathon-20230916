@@ -226,7 +226,7 @@ But wait. WTF is a [LangChain Document Loader](https://python.langchain.com/docs
 
 ![Untitled](images/Untitled%2023.png)
 
-If we look at the left sidebar, we can see a metric shit ton (the technical term) of [LangChain Document Loaders](https://python.langchain.com/docs/integrations/document_loaders/) we can use. For this example, we can see a Wikipedia Document Loader ready for us to use.
+If we look at the left sidebar, we can see a metric shit ton (the technical term) of [LangChain Document Loaders](https://python.langchain.com/docs/integrations/document_loaders/) we can use. For this example, we can see a [Wikipedia Document Loader](https://python.langchain.com/docs/integrations/document_loaders/wikipedia) ready for us to use.
 
 ![Untitled](images/Untitled%2024.png)
 
