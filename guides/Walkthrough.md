@@ -222,11 +222,11 @@ If we look at our [main.py](../main.py) file, we see a function defined toward t
 
 The first stop in our adventure is to use the [WikipediaLoader](https://python.langchain.com/docs/integrations/document_loaders/wikipedia) from LangChain to load raw data from Wikipedia based on the supplied query.
 
-But wait. WTF is a [LangChain Document Loader](https://www.notion.so/LangChain-Library-Adds-Full-Support-for-Neo4j-Vector-Index-910b91e110ae44f3970bf118cf06366b?pvs=21)? I thought you'd never ask!
+But wait. WTF is a [LangChain Document Loader](https://python.langchain.com/docs/modules/data_connection/document_loaders/)? I thought you'd never ask!
 
 ![Untitled](images/Untitled%2023.png)
 
-If we look at the left sidebar, we can see a metric shit ton (the technical term) of [LangChain Document Loader](https://www.notion.so/LangChain-Library-Adds-Full-Support-for-Neo4j-Vector-Index-910b91e110ae44f3970bf118cf06366b?pvs=21) we can use. For this example, we can see a Wikipedia Document Loader ready for us to use.
+If we look at the left sidebar, we can see a metric shit ton (the technical term) of [LangChain Document Loaders](https://python.langchain.com/docs/integrations/document_loaders/) we can use. For this example, we can see a [Wikipedia Document Loader](https://python.langchain.com/docs/integrations/document_loaders/wikipedia) ready for us to use.
 
 ![Untitled](images/Untitled%2024.png)
 
